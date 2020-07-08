@@ -48,6 +48,6 @@ try {
 
 $fbUser = $response->getGraphUser();
 if (!empty($fbUser)) {
-    include './function.php';
+    include '../util/function.php';
     loginFromSocialCallBack($fbUser);
 }

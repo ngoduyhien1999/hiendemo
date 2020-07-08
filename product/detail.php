@@ -9,7 +9,7 @@ and open the template in the editor.
         <title>Chi Tiết Sản Phẩm</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="css/style.css" >
+        <link rel="stylesheet" type="text/css" href="../asset/css/style.css" >
     </head>
     <style>
             .topnav {
@@ -49,8 +49,8 @@ and open the template in the editor.
             $currentUser = $_SESSION['current_user'];
             ?>
             <div class="topnav">
-            <a href="/dangnhap/login.php">Chào <?= $currentUser['fullname'] ?> </a>
-            <a href="/lesson-22/index.php">Trang Chủ</a>
+            <a href="../login/login.php">Chào <?= $currentUser['fullname'] ?> </a>
+            <a href="../product/index.php">Trang Chủ</a>
             <b>Hiển Project</b>
             </div>
             <div style="padding-right:16px">
@@ -59,8 +59,8 @@ and open the template in the editor.
         } else {
             ?>
             <div class="topnav">
-            <a href="/dangnhap/login.php">Đăng nhập</a>
-            <a href="/lesson-22/index.php">Trang Chủ</a>
+            <a href="../login/login.php">Đăng nhập</a>
+            <a href="../product/index.php">Trang Chủ</a>
             <b>Hiển Project</b>
             </div>
             <div style="padding-right:16px">
@@ -68,7 +68,7 @@ and open the template in the editor.
             }
         <?php } ?>
         <?php
-        include './connect_db.php';
+        include '../util/connect_db.php';
         $result = mysqli_query($con, "SELECT * FROM `product` WHERE `id` = ".$_GET['id']);
         $product = mysqli_fetch_assoc($result);
         $imgLibrary = mysqli_query($con, "SELECT * FROM `image_library` WHERE `product_id` = ".$_GET['id']);
@@ -86,7 +86,7 @@ and open the template in the editor.
                     <form id="add-to-cart-form" action="cart.php?action=add" method="POST">
                         <input type="text" value="1" name="quantity[<?=$product['id']?>]" size="2" /><br/>
                         <input type="submit" value="Mua sản phẩm" /><br/><br/>
-                        <div class="fb-share-button" data-href="https://hiendemo.uns.vn/lesson-22/detail.php?id=<?=$product['id']?>" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhiendemo.uns.vn%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+                        <div class="fb-share-button" data-href="https://hiendemo.uns.vn/product/detail.php?id=<?=$product['id']?>" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhiendemo.uns.vn%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
                     </form>
                     <?php if(!empty($product['images'])){ ?>
                     <div id="gallery">

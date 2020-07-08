@@ -56,9 +56,9 @@ and open the template in the editor.
     <body>
         <?php
         session_start();
-        include '../connect_db.php';
-        include '/dangnhap/facebook_source.php';
-        include '/dangnhap/google_source.php';
+        include '../util/connect_db.php';
+        include '../login/facebook_source.php';
+        include '../login/google_source.php';
         $error = false;
         if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password'])) {
             $result = mysqli_query($con, "Select `id`,`username`,`fullname`,`birthday` from `user` WHERE (`username` ='" . $_POST['username'] . "' AND `password` = md5('" . $_POST['password'] . "'))");
@@ -89,7 +89,7 @@ and open the template in the editor.
         <?php } ?>
         <?php if (empty($_SESSION['current_user'])) { ?>
             <div class="topnav">
-                <a href="../index.php">Trở lại Trang chủ</a>
+                <a href="./index.php">Trở lại Trang chủ</a>
                 <b>Hiển Project</b>
                 </div>
                 <div style="padding-right:16px">
@@ -107,10 +107,10 @@ and open the template in the editor.
                 <h2>Hoặc đăng nhập với mạng xã hội</h2>
                 <div id="login-with-social">
                     <?php if(isset($authUrl)){ ?>
-                    <a href="<?= $loginUrl ?>"><img src="./images/facebook.png" alt='facebook login' title="Facebook Login" height="50" width="280" /></a>
+                    <a href="<?= $loginUrl ?>"><img src="../asset/images/facebook.png" alt='facebook login' title="Facebook Login" height="50" width="280" /></a>
                     <?php } ?>
                     <?php if(isset($authUrl)){ ?>
-                    <a href="<?= $authUrl ?>"><img src="./images/google.png" alt='google login' title="Google Login" height="50" width="280" /></a>
+                    <a href="<?= $authUrl ?>"><img src="../asset/images/google.png" alt='google login' title="Google Login" height="50" width="280" /></a>
                     <?php } ?>
                 </div>
             </div>
@@ -119,7 +119,7 @@ and open the template in the editor.
             $currentUser = $_SESSION['current_user'];
             ?>
             <div class="topnav">
-                <a href="../index.php">Trở lại Trang chủ</a>
+                <a href="./index.php">Trở lại Trang chủ</a>
                 <b>Hiển Project</b>
                 </div>
                 <div style="padding-right:16px">

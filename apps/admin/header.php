@@ -9,14 +9,14 @@ and open the template in the editor.
         <title>quản trị menu đa cấp trong PHP</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../css/admin_style.css" >
-        <script src="../resources/ckeditor/ckeditor.js"></script>
+        <link rel="stylesheet" type="text/css" href="../asset/css/admin_style.css" >
+        <script src="../asset/js/ckeditor/ckeditor.js"></script>
     </head>
     <body>
         <?php
         session_start();
-        include '../connect_db.php';
-        include '../function.php';
+        include '../util/connect_db.php';
+        include '../product/function.php';
         if (!empty($_SESSION['current_user'])) { //Kiểm tra xem đã đăng nhập chưa?
             ?>
             <div id="admin-heading-panel">
@@ -25,9 +25,9 @@ and open the template in the editor.
                         Xin chào <span>Admin</span>
                     </div>
                     <div class="right-panel">
-                        <img height="24" src="../images/home.png" />
-                        <a href="../index.php">Trang chủ</a>
-                        <img height="24" src="../images/logout.png" />
+                        <img height="24" src="../asset/images/home.png" />
+                        <a href="apps/admin/index.php">Trang chủ</a>
+                        <img height="24" src="../asset/images/logout.png" />
                         <a href="logout.php">Đăng xuất</a>
                     </div>
                 </div>

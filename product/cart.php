@@ -10,7 +10,7 @@ and open the template in the editor.
         <title>Thông Tin Đơn Hàng</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="css/style.css" >
+        <link rel="stylesheet" type="text/css" href="../asset/css/style.css" >
     </head>
     <style>
             .topnav {
@@ -47,8 +47,8 @@ and open the template in the editor.
             $currentUser = $_SESSION['current_user'];
             ?>
             <div class="topnav">
-            <a href="/dangnhap/login.php">Chào <?= $currentUser['fullname'] ?> </a>
-            <a href="/lesson-22/index.php">Trang Chủ</a>
+            <a href="../login/login.php">Chào <?= $currentUser['fullname'] ?> </a>
+            <a href="../product/index.php">Trang Chủ</a>
             <b>Hiển Project</b>
             </div>
             <div style="padding-right:16px">
@@ -57,8 +57,8 @@ and open the template in the editor.
         } else {
             ?>
             <div class="topnav">
-            <a href="/dangnhap/login.php">Đăng nhập</a>
-            <a href="/lesson-22/index.php">Trang Chủ</a>
+            <a href="../login/login.php">Đăng nhập</a>
+            <a href="../product/index.php">Trang Chủ</a>
             <b>Hiển Project</b>
             </div>
             <div style="padding-right:16px">
@@ -66,7 +66,7 @@ and open the template in the editor.
             }
         <?php } ?>
         <?php
-        include './connect_db.php';
+        include '/util/connect_db.php';
         if (!isset($_SESSION["cart"])) {
             $_SESSION["cart"] = array();
         }
@@ -87,22 +87,21 @@ and open the template in the editor.
                     }
                 }
             }
-
             switch ($_GET['action']) {
                 case "add":
                     update_cart(true);
-                    header('Location: ./cart.php');
+                    header('Location:../product/cart.php');
                     break;
                 case "delete":
                     if (isset($_GET['id'])) {
                         unset($_SESSION["cart"][$_GET['id']]);
                     }
-                    header('Location: ./cart.php');
+                    header('Location:../product/cart.php');
                     break;
                 case "submit":
                     if (isset($_POST['update_click'])) { //Cập nhật số lượng sản phẩm
                         update_cart();
-                        header('Location: ./cart.php');
+                        header('Location:../product/cart.php');
                     } elseif ($_POST['order_click']) { //Đặt hàng sản phẩm
                         if (empty($_POST['name'])) {
                             $error = "Bạn chưa nhập tên của người nhận";

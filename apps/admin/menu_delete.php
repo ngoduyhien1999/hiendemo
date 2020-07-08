@@ -8,7 +8,7 @@ if (!empty($_SESSION['current_user'])) {
             <?php
             $error = false;
             if (isset($_GET['id']) && !empty($_GET['id'])) {
-                include '../connect_db.php';
+                include '../util/connect_db.php';
                 $menu = mysqli_query($con, "SELECT * FROM `menu` ORDER BY `menu`.`position` ASC");
                 $menuList = mysqli_fetch_all($menu, MYSQLI_ASSOC);
                 deleteChildrenMenu($_GET['id'],$menuList,$con);

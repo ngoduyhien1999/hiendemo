@@ -43,8 +43,8 @@ body {
 </style>
 <body>
     <div class="topnav">
-    <a class="active" href="./lesson-22/index.php">Trang mua hàng</a>
-    <a href="./dangnhap/login.php">Đăng nhập</a>
+    <a class="active" href="./product/index.php">Trang mua hàng</a>
+    <a href="./login/login.php">Đăng nhập</a>
     <b>Hiển Project</b>
     </div>
     <div style="padding-right:16px">

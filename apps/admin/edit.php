@@ -28,7 +28,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        include './connect_db.php';
+        include '../util/connect_db.php';
         $error = false;
         if (isset($_GET['action']) && $_GET['action'] == 'edit') {
             if (isset($_POST['user_id']) && !empty($_POST['user_id']) && isset($_POST['old_password']) && !empty($_POST['old_password']) && isset($_POST['new_password']) && !empty($_POST['new_password'])
@@ -53,7 +53,7 @@ and open the template in the editor.
                 <?php } else { ?>
                     <div id="edit-notify" class="box-content">
                         <h1><?= ($error !== false) ? $error : "Sửa tài khoản thành công" ?></h1>
-                        <a href="./login.php">Quay lại tài khoản</a>
+                        <a href="./index.php">Quay lại tài khoản</a>
                     </div>
                 <?php } ?>
             <?php } else { ?>

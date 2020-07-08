@@ -35,7 +35,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        include './connect_db.php';
+        include '../util/connect_db.php';
         include './function.php';
         $error = false;
         if (isset($_GET['action']) && $_GET['action'] == 'reg') {

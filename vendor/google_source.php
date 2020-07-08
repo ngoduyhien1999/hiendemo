@@ -1,13 +1,13 @@
 <?php
 
 //Google Code
-require_once ('./google/libraries/Google/autoload.php');
+require_once ('./Google/libraries/Google/autoload.php');
 
 //Insert your cient ID and secret 
 //You can get it from : https://console.developers.google.com/
 $client_id = '804364269020-qsgtcfemjbs3km7m5i3m4fl9o2scohlg.apps.googleusercontent.com';
 $client_secret = 'n21O8ngPyWiZSDqaaaXSyAxc';
-$redirect_uri = 'https://hiendemo.uns.vn/dangnhap/login.php';
+$redirect_uri = 'https://hiendemo.uns.vn/login/login.php';
 
 //incase of logout request, just unset the session var
 //if (isset($_GET['logout'])) {
@@ -66,7 +66,7 @@ if ($client->isAccessTokenExpired()) {
 if (!isset($authUrl)) {
     $googleUser = $service->userinfo->get(); //get user info 
     if(!empty($googleUser)){
-        include './function.php';
+        include '../util/function.php';
         loginFromSocialCallBack($googleUser);
     }
 }
