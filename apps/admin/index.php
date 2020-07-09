@@ -72,7 +72,7 @@ and open the template in the editor.
             if ($error !== false || $result->num_rows == 0) {
                 ?>
                 <div class="topnav">
-                <a href="../index.php">Trở lại Trang chủ</a>
+                <a href="../product/index.php">Trở lại Trang chủ</a>
                 <b>Hiển Project</b>
                 </div>
                 <div style="padding-right:16px">
@@ -89,7 +89,7 @@ and open the template in the editor.
         <?php } ?>
         <?php if (empty($_SESSION['current_user'])) { ?>
             <div class="topnav">
-                <a href="./index.php">Trở lại Trang chủ</a>
+                <a href="../product/index.php">Trở lại Trang chủ</a>
                 <b>Hiển Project</b>
                 </div>
                 <div style="padding-right:16px">
