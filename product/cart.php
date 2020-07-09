@@ -11,36 +11,8 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../asset/css/style.css" >
+        <link rel="stylesheet" href="../asset/css/style.css">
     </head>
-    <style>
-            .topnav {
-                overflow: hidden;
-                background-color: #333;
-            }
-            .topnav b {
-                float: left;
-                font-size: 30px;
-                color: white;
-            }
-            .topnav a {
-                float: right;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-                font-size: 17px;
-            }
-            
-            .topnav a:hover {
-                background-color: #ddd;
-                color: black;
-            }
-            
-            .topnav a.active {
-                background-color: #4CAF50;
-                color: white;
-            }
-    </style>
     <body>
     <?php
         if (!empty($_SESSION['current_user'])) {

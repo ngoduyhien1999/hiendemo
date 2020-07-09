@@ -9,6 +9,7 @@ and open the template in the editor.
         <title>Đổi thông tin thành viên</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../asset/css/topnav.css">
         <style>
             .box-content{
                 margin: 0 auto;
@@ -27,6 +28,13 @@ and open the template in the editor.
         </style>
     </head>
     <body>
+        <?php if (empty($_SESSION['current_user'])) { ?>
+            <div class="topnav">
+                <a href="../product/index.php">Trở lại Trang chủ</a>
+                <b>Hiển Project</b>
+                </div>
+                <div style="padding-right:16px">
+                </div>
         <?php
         include '../util/connect_db.php';
         $error = false;

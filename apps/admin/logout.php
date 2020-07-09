@@ -9,24 +9,17 @@ and open the template in the editor.
         <title>Đăng xuất tài khoản</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            .box-content{
-                margin: 0 auto;
-                width: 800px;
-                border: 1px solid #ccc;
-                text-align: center;
-                padding: 20px;
-            }
-            #user_logout form{
-                width: 200px;
-                margin: 40px auto;
-            }
-            #user_logout form input{
-                margin: 5px 0;
-            }
-        </style>
+        <link rel="stylesheet" href="admin.css">
     </head>
     <body>
+        <?php if (empty($_SESSION['current_user'])) { ?>
+            <div class="topnav">
+                <a href="../product/index.php">Trở lại Trang chủ</a>
+                <a href="../apps/admin/index.php">Quay lại trang đăng nhập</a>
+                <b>Hiển Project</b>
+                </div>
+                <div style="padding-right:16px">
+                </div>
         <?php
         session_start();
         unset($_SESSION['current_user']);

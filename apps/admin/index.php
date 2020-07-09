@@ -9,49 +9,7 @@ and open the template in the editor.
         <title> Quản lý sản phẩm </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            .box-content{
-                margin: 0 auto;
-                width: 800px;
-                border: 1px solid #ccc;
-                text-align: center;
-                padding: 20px;
-            }
-            #user_login form{
-                width: 200px;
-                margin: 40px auto;
-            }
-            #user_login form input{
-                margin: 5px 0;
-            }
-            .topnav {
-                overflow: hidden;
-                background-color: #333;
-            }
-            .topnav b {
-                float: left;
-                font-size: 30px;
-                color: white;
-            }
-            .topnav a {
-                float: right;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-                font-size: 17px;
-            }
-            
-            .topnav a:hover {
-                background-color: #ddd;
-                color: black;
-            }
-            
-            .topnav a.active {
-                background-color: #4CAF50;
-                color: white;
-            } 
-        </style>
+        <link rel="stylesheet" href="admin.css">
     </head>
     <body>
         <?php
