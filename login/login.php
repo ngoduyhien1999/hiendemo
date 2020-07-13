@@ -24,25 +24,7 @@ and open the template in the editor.
         session_start();
         include '../util/connect_db.php';
         $error = false;
-            if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password'])) {
-            $result = mysqli_query($con, "Select `id`,`username`,`fullname`,`birthday` from `user` WHERE (`username` ='" . $_POST['username'] . "' AND `password` = md5('" . $_POST['password'] . "'))");
-            if (!$result) {
-                $error = mysqli_error($con);
-            } else {
-                $user = mysqli_fetch_assoc($result);
-                $_SESSION['current_user'] = $user;
-            }
-            mysqli_close($con);
-            if ($error !== false || $result->num_rows == 0) {
-                ?>
-                <div id="login-notify" class="box-content">
-                    <h1>Thông báo</h1>
-                    <h4><?= !empty($error) ? $error : "Thông tin đăng nhập không chính xác" ?></h4>
-                    <a href="./index.php">Quay lại</a>
-                </div>
-                <?php
-                exit;
-            }
+        $user = loginUser(addslashes($_POST['username','password']));
         ?>
         <?php
         if (!empty($_SESSION['current_user'])) {

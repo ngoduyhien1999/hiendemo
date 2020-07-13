@@ -231,3 +231,100 @@ function validateDateTime($date) {
     }
     return true;
 }
+
+function loginUser($username, $password) {
+    $con = getDbClient();
+    $query = prepareloginQuery($username);
+    $result = $con.mysqli_query("Select `id`,`username`,`fullname`,`birthday` from `user` WHERE (`username` ='" . addslashes($_POST['username']) . "' ");
+    $error = ErorNotify($result);
+    executequery($con,$query){
+    if ($result){
+        return $error = mysqli_error($con);
+    }else {
+        return $user = mysqli_fetch_assoc($result);
+        $_SESSION[]=$user
+    }
+    }
+    mysqli_close($con);
+    }
+    
+function prepareloginQuery($username, $password) {
+    isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password'])
+}
+    
+function ErorNotify($error, $result) {
+        if($error !== false || $result->num_row == 0){
+            ?>
+            <div id="login-notify" class="box-content">
+                <h1>Thông báo</h1>
+                <h4><?= !empty($error) ? $error : "Thông tin đăng nhập không chính xác" ?></h4>
+                <a herf="../index.php">Quay lại</a>
+            </div>[';']
+            <?php
+        }
+}
+function registeruser($username) {
+    $con = getDbClient();
+    $query = prepareloginQuery();
+    $result = $con.mysqli_query("Select `id`,`username`,`fullname`,`birthday` from `user` WHERE(`username` =`" . addslashes($_POST['username']) . "' ");
+    executequery($con, $query){
+if ($result){
+    return $user = mysqli_fetch_assoc($result)
+    $_SESSION[]=$user;
+} else {
+    return $error = mysqli_error($con);
+}
+}
+mysqli_close($con);
+}
+
+function Register_check() {
+    $fullname = $_POST['fullname'];
+    $birthday = $_POST['birthday'];
+    $check = validateDateTime($birthday);
+    if($check) {
+        $birthday = strtotime($birthday);
+        $result = mysqli_query($con, " INSERT INTO `user` (`fullname`,`username`,`password`, `birthday`, `status`, `created_time`, `last_updated`) VALUES ('" . $_POST['fullname'] . "', '" . $_POST['username'] . "', MD5('" . $_POST['password'] . "'), '" . $birthday . "', 1, " . time() . ", '" . time() . "');");
+        if(!$result) {
+            if (strpos(mysqli_error($con),"Duplicate entry") !== FALSE) {
+                $error = "Tài khoản đã tồn tại. Bạn vui lòng chọn tài khoản khác.";
+            }
+        }
+        mysqli_close($con);
+    } else {
+        $error = "Ngày tháng nhập chưa chính xác";
+    }
+    if ($error !== false) {
+        ?>
+        <div id="error-notify" class="box-content">
+            <h1>Thông báo</h1>
+            <h4><? $error ?></h4>
+            <a href="../login/login.php">Mời bạn đăng nhập</a>
+        </div>
+    <?php } ?>
+    <?php } else { ?>
+        <div id="edit-notify" class="box-content">
+            <h1>Vui lòng nhập đủ thông tin để đăng kí tài khoản</h1>
+            <a href="../login/registrer.php">Quay lại trang đăng ký</a>
+        </div>
+        <?php
+    }
+    } else {
+        ?>
+        <div id="user_register" class="box-content">
+        <h1>Đăng kí tài khoản</h1>
+        <form action="../login/register.php?action=reg" method="Post" autocomplete="off">
+            <label>Username</label></br>
+            <input type="text" name="username" value="" /></br>
+            <label>Password</label></br>
+            <input type="Password" name="password" value="" /></br>
+            <label>Họ tên</label></br>
+            <input type="text" name="fullname" value="" /></br>
+            <label>Ngày sinh (DD-MM-YYYY)</label>
+            <input type="text" name="birthday" value="" /></br>
+            </br>
+            </br>
+            <input type="submit" value="Đăng kí">
+        </form>
+        </div>
+}
